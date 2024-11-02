@@ -1,10 +1,11 @@
 ## 바로가기
 
 #### 1. [타입스크립트 설치](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#1-타입스크립트-설치-1)
-#### 2. [개발환경 편하게 쓰기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#2-프로젝트-실행-가이드-1)
-#### 3. [Express 핸들러 타입 사용하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#3-Express-핸들러-타입-사용하기-1)
-#### 4. [패키지의 타입 커스텀하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#4-패키지-타입-커스텀하기-1)
-#### 5. [ORM에서 타입 사용하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file##5-ORM에서-타입-사용하기-1)
+#### 2. [개발환경 편하게 쓰기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#2-개발환경-편하게-쓰기-1)
+#### 3. [타입 패키지 설치하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#3-타입-패키지-설치하기-1)
+#### 4. [Express 핸들러 타입 사용하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#4-Express-핸들러-타입-사용하기-1)
+#### 5. [패키지의 타입 커스텀하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#5-패키지-타입-커스텀하기-1)
+#### 6. [ORM에서 타입 사용하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file##6-ORM에서-타입-사용하기-1)
 
 ---
 
@@ -81,11 +82,53 @@ npx tsc --init
 ```
 npm run build
 ```
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/28a6b2ae-7e86-4e5f-acce-1227a0992cd0)
 
 ---
 
 # 2. 개발환경 편하게 쓰기
+
+- 타입스크립트는 소스코드를 수정하면 빌드를 해서 JS로 만든 다음 실행을 해야됨. <br>
+→ ts-node 와 nodemon으로 개발환경 편하게 세팅할 수 있음.
+
+#### ts-node 설치
+```
+npm i --save-dev ts-node
+```
+- https://www.npmjs.com/package/ts-node
+
+#### 스크립트 명령어 추가
+```
+"dev": "ts-node src/app.ts",
+```
+
+![image](https://github.com/user-attachments/assets/359b7308-693e-48e5-af17-93b18c2217dd)
+
+- <b>문제점</b> : 코드를 수정할 때마다 해당 명령어를 입력하여 실행시켜야함.
+- <b>해결방안</b> : nodemon 패키지를 설치하여 ts-node와 함께 사용할 것임.
+
+#### nodemon 설치
+
+```
+npm i --save-dev nodemon
+```
+- https://www.npmjs.com/package/nodemon
+
+#### 스크립트 명령어 수정
+
+```
+"dev": "nodemon --watch src --exec ts-node src/app.ts",
+```
+- 참고로 nodemon에서는 기본적으로 ts 파일은 exec에 대해서 ts-node를 사용하게 해줌.
+- 아래와 같이 명령어를 입력해도 실행이 됨.
+
+```
+"dev": "nodemon --watch src src/app.ts",
+```
+
+![image](https://github.com/user-attachments/assets/31c685f7-2474-46ae-9238-c1f097bd7cf1)
+
+![image](https://github.com/user-attachments/assets/4ec3b938-c64a-446e-ac16-88369ab162a3)
 
 ---
 
