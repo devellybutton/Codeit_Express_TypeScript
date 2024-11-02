@@ -134,9 +134,28 @@ npm i --save-dev nodemon
 
 # 3. 타입 패키지 설치하기
 
+- express 패키지는 자바스크립트 코드임. <br>
+→ 타입스크립트에서 불러오면 타입을 알 수 없어서 오류가 남.
+
+![image](https://github.com/user-attachments/assets/03cb802c-8fce-4520-a88d-af2e6bc1984e)
+
+#### 일반적으로 타입스크립트에서 패키지를 설치해서 쓸 때 두 가지 경우가 있음.
+1. 패키지가 TS로 개발되어 있어서 신경쓰지 않아도 됨.
+- 예) axios : 패키지 자체적으로 타입을 제공함. (TS)
+2. JS로 만들어진 패키지는 <b>타입 정의</b>를 다운 받아서 써야됨.
+- 예) express : @types/express (타입 정의 패키지, DT)
+
+#### 타입 정의를 다운받아 사용하는 방법
+1. npm 사이트에서 패키지 이름 앞에 '@types/'를 붙여서 검색한다.
+2. dev dependency로 설치하면 됨.
+
+![image](https://github.com/user-attachments/assets/01ba0cf5-977f-49d3-8b81-5349f8c56df9)
+
 ---
 
 # 4. Express 핸들러 타입 사용하기
+
+
 
 ---
 
