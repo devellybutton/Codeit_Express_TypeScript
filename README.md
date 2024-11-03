@@ -55,7 +55,6 @@ npm i --save-dev typescript
 ```
 npx tsc --init
 ```
-![alt text](image.png)
 - TypeScript 컴파일러에 대한 설정을 정의
 
 #### 프로젝트 폴더 분리
