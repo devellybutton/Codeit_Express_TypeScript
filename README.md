@@ -155,7 +155,24 @@ npm i --save-dev nodemon
 
 # 4. Express 핸들러 타입 사용하기
 
+#### 타입 확인하는 방법
+- 객체에 '.' 입력 : 목록으로 뜨는 프로퍼티 확인
+- ctrl + 클릭 : 타입 직접 확인
 
+![ezgif-6-1dbc1a3617](https://github.com/user-attachments/assets/081dede9-1a74-41ef-a27d-196fb0103b81)
+
+#### 핸들러 함수 타입 정의
+- 위, 아래 같은 코드임.
+```
+const handler = (req: Request, res: Response, next: NextFunction) => {
+  res.send();
+};
+```
+```
+const handler: RequestHandler = (req, res, next) => {
+  res.send();
+};
+```
 
 ---
 

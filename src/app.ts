@@ -1,10 +1,10 @@
-import express from 'express';
+import express, { Request, Response, NextFunction, RequestHandler } from 'express';
 
 const app = express();
 
-app.get('/', (req, res) => {
+const handler: RequestHandler = (req, res, next) => {
   res.send();
-});
+};
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
