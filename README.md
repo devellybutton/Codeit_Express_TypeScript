@@ -5,7 +5,6 @@
 #### 3. [타입 패키지 설치하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#3-타입-패키지-설치하기-1)
 #### 4. [Express 핸들러 타입 사용하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#4-Express-핸들러-타입-사용하기-1)
 #### 5. [패키지의 타입 커스텀하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file#5-패키지-타입-커스텀하기-1)
-#### 6. [ORM에서 타입 사용하기](https://github.com/devellybutton/Codeit_Express_TypeScript?tab=readme-ov-file##6-ORM에서-타입-사용하기-1)
 
 ---
 
@@ -155,6 +154,8 @@ npm i --save-dev nodemon
 
 # 4. Express 핸들러 타입 사용하기
 
+기본적으로 express에서 정의된 파일은 알아서 추론이 됨.
+
 #### 타입 확인하는 방법
 - 객체에 '.' 입력 : 목록으로 뜨는 프로퍼티 확인
 - ctrl + 클릭 : 타입 직접 확인
@@ -178,6 +179,49 @@ const handler: RequestHandler = (req, res, next) => {
 
 # 5. 패키지의 타입 커스텀하기
 
----
+multer라는 패키지를 통해 패키지의 타입을 덮어쓰는 방법을 알아보기
 
-# 6. ORM에서 타입 사용하기
+#### multer 타입스크립트 패키지 설치
+
+```
+npm i --save-dev @types/multer
+```
+
+#### 오버라이딩
+
+![ezgif-7-ddfa3bb2cf](https://github.com/user-attachments/assets/2f638141-de47-4e04-ba73-bbb95b45c129)
+
+- 오버라이딩 : 기존의 타입에 타입을 덮어씀
+- Express Request의 타입에 file 프로퍼티를 추가하여 기존에 있던 것하고 합쳐짐.
+
+#### express.d.ts 파일 추가
+
+- <b>declare global</b> 
+  - 전역적으로 정의된 파일을 덮어쓰기
+  - 반드시 모듈 파일에서만 사용할 수 있어서 이걸 import 혹은 export 해줘야 함.
+```
+import { Express } from "express";
+
+declare global {
+    namespace Express {
+        interface Request {
+            valid?: boolean;
+        }
+    }
+}
+```
+
+#### tsconfig.json에서 typeRoots에 타입 정의 파일 경로 추가
+
+![image](https://github.com/user-attachments/assets/acf23b2f-c3ad-4e80-9bee-f8fccea111af)
+
+- npm run dev로 ts-node 실행시 기본적으로 타입 정의 파일을 불러오지 않아서 오류가 발생함.
+- tsconfig.json에서 타입 정의 파일을 명시적으로 지정해주면 해결됨.
+
+<b>tsconfig.json</b>
+```
+"typeRoots": [
+  "./typings",
+  "./node_modules/@types"
+],     
+```
